@@ -3,10 +3,10 @@
 
 [Fact] – attribute states that the method should be executed by the test runner
 
-
+---------------------------
 [Theory] – attribute implies that we are going to send some parameters to our testing code. So, it is similar to the [Fact] attribute, because it states that the method should be executed by the test runner, but additionally implies that we are going to send parameters to the test method
 
-
+--------------------------------------
 
 [InlineData] – attribute provides those parameters we are sending to the test method. If we are using the [Theory] attribute, we have to use the [InlineData] as well
 
@@ -25,4 +25,17 @@
         public void IsValid_AccountNumberFirstPartWrong_ReturnsFalse(string accountNumber)
         {
             Assert.False(_validation.IsValid(accountNumber));
+        }
+---------------------------------------------
+        [Fact]
+        public async Task AlbumGetAllAsync()
+        {
+            // Arrange :: Arrange part which is used for setting up any resources that your test may need.
+
+            // Act  :: Act is the part that performs the action of the test.
+            
+            var albums = await _repo.GetAllAsync();
+
+            // Assert ::  verify or Assert that the action of the test was correct
+            Assert.Single(albums);
         }
